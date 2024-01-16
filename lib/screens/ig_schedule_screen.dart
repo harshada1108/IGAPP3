@@ -25,7 +25,7 @@ class _IgScheduleScreenState extends State<IgScheduleScreen> {
   FilterList? selectedMenu;
 
   final format= DateFormat('dd/MM/yy');
-  String name='20231120';
+  String name='10-02-2023';
 
   Future<void> _refreshData(String data) async {
     // Fetch the updated data from the API
@@ -47,12 +47,12 @@ class _IgScheduleScreenState extends State<IgScheduleScreen> {
               onSelected: (FilterList item){
                 if(FilterList.zerothday.name == item.name)
                 {
-                  name='20231120';
+                  name='10-02-2023';
                   _refreshData(name);
                 }
                 if(FilterList.firstday.name == item.name)
                 {
-                  name='20231121';
+                  name='11-02-2023';
                   _refreshData(name);
                 }
 
