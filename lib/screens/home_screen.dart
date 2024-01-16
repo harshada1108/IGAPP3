@@ -7,6 +7,7 @@ import 'package:igapp/screens/ig_schedule_screen.dart';
 
 import 'ig_enthu_screen.dart';
 import 'ig_leader_screen.dart';
+import 'package:igapp/screens/notification_screen.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
@@ -88,6 +89,29 @@ class _HomescreenState extends State<Homescreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text('IG Schedule',style: GoogleFonts.brawler(fontSize: 20,fontWeight: FontWeight.w700,color: Colors.black87),)
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: InkWell(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>IgNotificationScreen()));
+              },
+              child: Container(
+                height: height*0.1,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.blueAccent
+                ),
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('IG Notifications',style: GoogleFonts.brawler(fontSize: 20,fontWeight: FontWeight.w700,color: Colors.black87),)
                     ],
                   ),
                 ),
