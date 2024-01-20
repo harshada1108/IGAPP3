@@ -64,6 +64,7 @@ class _IgNotificationScreenState extends State<IgNotificationScreen> {
                                 padding: EdgeInsets.all(10),
                                 alignment: Alignment.bottomCenter,
                                 height: height *.22,
+<<<<<<< HEAD
                                 width: width*.9,
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(vertical: 15.0,horizontal: 10),
@@ -82,6 +83,22 @@ class _IgNotificationScreenState extends State<IgNotificationScreen> {
                                             ),
                                             child: Center(child: Text(snapshot.data!.notifications[index].data.toString(),maxLines:3,overflow: TextOverflow.ellipsis,style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w700),))),
                                       ),
+=======
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: 15.0,horizontal: 10),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                           width:width*0.9,
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(10),
+                                              color: Colors.blue
+
+                                          ),
+                                          child: Center(child: Text(snapshot.data!.notifications[index].data.toString(),maxLines:3,overflow: TextOverflow.ellipsis,style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w700),))),
+>>>>>>> origin/master
 
                                     ],
                                   ),

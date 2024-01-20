@@ -3,11 +3,10 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart'as http;
 import 'package:igapp/models/ig_leader_model.dart';
-import 'package:igapp/models/notificationmodel.dart';
 import 'package:igapp/models/schedule.dart';
+
 import '../models/ig_enthu_model.dart';
-import 'package:igapp/models/article_model.dart';
-import 'package:igapp/models/imagemodel.dart';
+
 class IgRepository{
 
 
@@ -42,7 +41,6 @@ class IgRepository{
       throw Exception("Error");
     }
   }
-
   Future<schedulemodel> fetchIgscheduleApi(String date)async {
     String url = 'https://campaverse-production.up.railway.app/api/v1/schedules/${date}';
     final response = await http.get(Uri.parse(url));
@@ -52,51 +50,6 @@ class IgRepository{
     if (response.statusCode == 200) {
       final body = jsonDecode(response.body);
       return schedulemodel.fromJson(body);
-    } else {
-      throw Exception("Error");
-    }
-  }
-
-  Future<notificationmodel> fetchIgnotificationApi()async {
-    String url = 'https://campaverse-production.up.railway.app/api/v1/notification';
-    final response = await http.get(Uri.parse(url));
-    if (kDebugMode) {
-      print(response.body);
-    }
-    if (response.statusCode == 200) {
-      final body = jsonDecode(response.body);
-      return notificationmodel.fromJson(body);
-    } else {
-      throw Exception("Error");
-    }
-  }
-
-
-  Future<articlemodel> fetchIgarticleApi()async {
-    String url = 'https://campaverse-production.up.railway.app/api/v1/articles';
-    final response = await http.get(Uri.parse(url));
-    if (kDebugMode) {
-      print(response.body);
-    }
-    if (response.statusCode == 200) {
-      final body = jsonDecode(response.body);
-      return articlemodel.fromJson(body);
-    } else {
-      throw Exception("Error");
-    }
-  }
-
-
-
-  Future<imagemodel> fetchIgimageApi()async {
-    String url = 'https://campaverse-production.up.railway.app/api/v1/images';
-    final response = await http.get(Uri.parse(url));
-    if (kDebugMode) {
-      print(response.body);
-    }
-    if (response.statusCode == 200) {
-      final body = jsonDecode(response.body);
-      return imagemodel.fromJson(body);
     } else {
       throw Exception("Error");
     }
