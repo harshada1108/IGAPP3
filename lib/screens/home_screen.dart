@@ -3,7 +3,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:igapp/screens/article_screen.dart';
 import 'package:igapp/screens/ig_schedule_screen.dart';
+import 'package:igapp/screens/notification_screen.dart';
 
 import 'ig_enthu_screen.dart';
 import 'ig_leader_screen.dart';
@@ -22,79 +24,129 @@ class _HomescreenState extends State<Homescreen> {
     final height= MediaQuery.sizeOf(context).height;
     final width=MediaQuery.sizeOf(context).width;
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: InkWell(
-              onTap: (){
-                 Navigator.push(context, MaterialPageRoute(builder: (context)=>IgScreen()));
-              },
-              child: Container(
-                height: height*0.1,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.blueAccent
-                ),
-                child: Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('IG Enthuboard',style: GoogleFonts.brawler(fontSize: 20,fontWeight: FontWeight.w700,color: Colors.black87),)
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: InkWell(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>IgleaderScreen()));
-              },
-              child: Container(
-                height: height*0.1,
-                decoration: BoxDecoration(
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: InkWell(
+                onTap: (){
+                   Navigator.push(context, MaterialPageRoute(builder: (context)=>IgScreen()));
+                },
+                child: Container(
+                  height: height*0.1,
+                  decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Colors.blueAccent
-                ),
-                child: Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('IG Leaderboard',style: GoogleFonts.brawler(fontSize: 20,fontWeight: FontWeight.w700,color: Colors.black87),)
-                    ],
+                  ),
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('IG Enthuboard',style: GoogleFonts.brawler(fontSize: 20,fontWeight: FontWeight.w700,color: Colors.black87),)
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: InkWell(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>IgScheduleScreen()));
-              },
-              child: Container(
-                height: height*0.1,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.blueAccent
-                ),
-                child: Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('IG Schedule',style: GoogleFonts.brawler(fontSize: 20,fontWeight: FontWeight.w700,color: Colors.black87),)
-                    ],
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>IgleaderScreen()));
+                },
+                child: Container(
+                  height: height*0.1,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.blueAccent
+                  ),
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('IG Leaderboard',style: GoogleFonts.brawler(fontSize: 20,fontWeight: FontWeight.w700,color: Colors.black87),)
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>IgScheduleScreen()));
+                },
+                child: Container(
+                  height: height*0.1,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.blueAccent
+                  ),
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('IG Schedule',style: GoogleFonts.brawler(fontSize: 20,fontWeight: FontWeight.w700,color: Colors.black87),)
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>IgArticleScreen()));
+                },
+                child: Container(
+                  height: height*0.1,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.blueAccent
+                  ),
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('IG Article',style: GoogleFonts.brawler(fontSize: 20,fontWeight: FontWeight.w700,color: Colors.black87),)
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>IgNotificationScreen()));
+                },
+                child: Container(
+                  height: height*0.1,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.blueAccent
+                  ),
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('IG Notification',style: GoogleFonts.brawler(fontSize: 20,fontWeight: FontWeight.w700,color: Colors.black87),)
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

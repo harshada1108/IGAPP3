@@ -25,12 +25,10 @@ class _IgScheduleScreenState extends State<IgScheduleScreen> {
   FilterList? selectedMenu;
 
   final format= DateFormat('dd/MM/yy');
-  String name='10-02-2023';
+  String name="10-02-2023";
 
   Future<void> _refreshData(String data) async {
-    // Fetch the updated data from the API
     await igViewModel.fetchIgscheduleApi(data);
-    // Trigger a rebuild with the new data
     setState(() {});
   }
   @override
@@ -55,9 +53,6 @@ class _IgScheduleScreenState extends State<IgScheduleScreen> {
                   name='11-02-2023';
                   _refreshData(name);
                 }
-
-
-
                 setState(() {
                   selectedMenu=item;
                 });
@@ -83,66 +78,50 @@ class _IgScheduleScreenState extends State<IgScheduleScreen> {
                 builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot){
                   if(snapshot.connectionState==ConnectionState.waiting)
                   {
-                    return Center(
+                    return const Center(
                       child: SpinKitCircle(
                         size: 50,
                         color: Colors.blue,
                       ),
                     );
                   }
-                  else{
+                  else {
                     return ListView.builder(
                         scrollDirection: Axis.vertical,
                         itemCount: snapshot.data!.schedules!.length,
                         itemBuilder: (context,index)
                         {
                           DateTime dateTime = DateTime.parse(snapshot.data!.schedules![index].date.toString());
-                          return Container(
-                            padding: EdgeInsets.all(10),
-                            alignment: Alignment.bottomCenter,
-                            height: height *.22,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                   borderRadius: BorderRadius.circular(15),
-                                  color: Colors.blueAccent,
-                                ),
-                              
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 15.0,horizontal: 10),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                     Container(
-                                       width:width*0.3,
-                                       decoration: BoxDecoration(
-                                         borderRadius: BorderRadius.circular(20),
-                                         color: Colors.white60
-                                       ),
-                                         child: Center(child: Text(snapshot.data!.schedules![index].team1.toString(),maxLines:1,overflow: TextOverflow.ellipsis,style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w700),))),
-                                      Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            'VS',style: GoogleFonts.brawler(fontSize: 20,fontWeight: FontWeight.w600,color: Colors.black87),
-                                          ),
-                                        ],
-                                      ),
-                                      Container(
-                                          width:width*0.3,
+                          if(snapshot.data!.schedules![index].team1.toString()!="null")
+                          {
+                            return Container(
+                              padding: EdgeInsets.all(10),
+                              alignment: Alignment.bottomCenter,
+                              height: height *.22,
+                              width: width*.9,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 15.0,horizontal: 10),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                      child: Container(
+                                          width:width*0.8,
                                           decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(20),
-                                              color: Colors.white60
+                                              borderRadius: BorderRadius.circular(10),
+                                              color: Colors.blue
+
                                           ),
-                                          child: Center(child: Text(snapshot.data!.schedules![index].team2.toString(),maxLines:1,overflow: TextOverflow.ellipsis,style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w700),))),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          );
+                                          child: Center(child: Text(snapshot.data!.notifications[index].data.toString(),maxLines:3,overflow: TextOverflow.ellipsis,style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w700),))),
+                                    ),
+                                  ],
+                                ),),);
+                          }
+                          else{
+                            return Container();
+                          }
                         }
                     );
                   }
