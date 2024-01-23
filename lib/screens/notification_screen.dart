@@ -81,7 +81,7 @@ class _IgNotificationScreenState extends State<IgNotificationScreen> {
                                                 color: Colors.blue
 
                                             ),
-                                            child: Center(child: Text(snapshot.data!.notifications[index].data.toString(),maxLines:3,overflow: TextOverflow.ellipsis,style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w700),))),
+                                            child: Center(child: Text(snapshot.data!.notifications![index].data!.toString(),maxLines:3,overflow: TextOverflow.ellipsis,style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w700),))),
                                       ),
                                 ],
                               ),),);

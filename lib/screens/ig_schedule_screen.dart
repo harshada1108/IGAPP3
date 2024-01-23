@@ -1,6 +1,3 @@
-
-
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -60,10 +57,10 @@ class _IgScheduleScreenState extends State<IgScheduleScreen> {
               itemBuilder: (BuildContext context)=> <PopupMenuEntry<FilterList>>[
                 PopupMenuItem<FilterList>(
                   value: FilterList.zerothday,
-                  child: Text('20/11/2023'),),
+                  child: Text('10/02/2023'),),
                 PopupMenuItem<FilterList>(
                   value: FilterList.firstday,
-                  child: Text('21/11/2023'),),
+                  child: Text('11/02/2023'),),
               ])
         ],
       ),
@@ -91,7 +88,7 @@ class _IgScheduleScreenState extends State<IgScheduleScreen> {
                         itemCount: snapshot.data!.schedules!.length,
                         itemBuilder: (context,index)
                         {
-                          DateTime dateTime = DateTime.parse(snapshot.data!.schedules![index].date.toString());
+                          //DateTime dateTime = DateTime.parse(snapshot.data!.schedules![index].date.toString());
                           if(snapshot.data!.schedules![index].team1.toString()!="null")
                           {
                             return Container(
@@ -114,7 +111,23 @@ class _IgScheduleScreenState extends State<IgScheduleScreen> {
                                               color: Colors.blue
 
                                           ),
-                                          child: Center(child: Text(snapshot.data!.notifications[index].data.toString(),maxLines:3,overflow: TextOverflow.ellipsis,style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w700),))),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Center(child: Text(snapshot.data!.schedules![index].team1.toString(),maxLines:3,overflow: TextOverflow.ellipsis,style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w700),)),
+                                              Column(
+                                                children: [
+
+                                                  Center(child: Text('VS',maxLines:1,overflow: TextOverflow.ellipsis,style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w700),)),
+                                                  Center(child: Text(snapshot.data!.schedules![index].venue.toString(),maxLines:3,overflow: TextOverflow.ellipsis,style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w700),)),
+
+                                                ],
+                                              ),
+
+                                              Center(child: Text(snapshot.data!.schedules![index].team2.toString(),maxLines:3,overflow: TextOverflow.ellipsis,style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w700),)),
+
+                                            ],
+                                          )),
                                     ),
                                   ],
                                 ),),);

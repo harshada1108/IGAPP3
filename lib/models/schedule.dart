@@ -33,9 +33,9 @@ class Schedules {
   String? team2;
   String? venue;
   String? gameName;
-  Null? winner;
-  int? date;
-  int? time;
+  String? winner;
+  String? date;
+  String? time;
   String? timeAtCreate;
   int? iV;
 

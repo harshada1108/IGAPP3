@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:igapp/screens/SplashScreen.dart';
 import 'package:igapp/screens/home_screen.dart';
 import 'package:igapp/screens/ig_schedule_screen.dart';
 
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Homescreen(),
+      home: SplashScreen(),
     );
   }
 }
