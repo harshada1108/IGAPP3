@@ -116,11 +116,10 @@ class _IgScheduleScreenState extends State<IgScheduleScreen> {
                                             children: [
                                               Center(child: Text(snapshot.data!.schedules![index].team1.toString(),maxLines:3,overflow: TextOverflow.ellipsis,style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w700),)),
                                               Column(
+                                                mainAxisAlignment: MainAxisAlignment.center,
                                                 children: [
 
                                                   Center(child: Text('VS',maxLines:1,overflow: TextOverflow.ellipsis,style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w700),)),
-                                                  Center(child: Text(snapshot.data!.schedules![index].venue.toString(),maxLines:3,overflow: TextOverflow.ellipsis,style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w700),)),
-
                                                 ],
                                               ),
 

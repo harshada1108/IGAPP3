@@ -3,6 +3,8 @@ import 'package:igapp/screens/ig_schedule_screen.dart';
 import 'package:igapp/screens/igenthu.dart';
 import 'package:igapp/screens/igleader2.dart';
 import 'package:igapp/screens/notification_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:shadow/shadow.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -36,9 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
       appBar: AppBar(
 
-          title: Text("अद्वैतम्",style: TextStyle(color: Colors.white,fontSize:height*0.05),),
+          title: Text("अद्वैतम्",style: TextStyle(color: Colors.white,fontSize:height*0.03),),
 
-          leading: IconButton(icon: Icon(Icons.menu,size: height*0.05,color: Colors.white,), onPressed: () {  },),
+          leading: IconButton(icon: Icon(Icons.menu,size: height*0.03,color: Colors.white,), onPressed: () {  },),
           elevation: 0,
           centerTitle: true,
           backgroundColor: Colors.black,
@@ -46,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Padding(
               padding: const EdgeInsets.only(right: 20),
               child: IconButton(
-                icon: Icon(Icons.notification_add_outlined,size:  height*0.05,color: Colors.white,),
+                icon: Icon(Icons.notification_add_outlined,size:  height*0.03,color: Colors.white,),
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>IgNotificationScreen()));
 
@@ -86,25 +88,47 @@ class _HomeScreenState extends State<HomeScreen> {
                 {
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>IgScheduleScreen()));
                 },
-                child: Container(
-                  height: height*0.2,
-                  width: width*0.9,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(height*0.02),
-                   color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.shade700.withOpacity(0.6),
-                        spreadRadius: 5,
-                        blurRadius: 2,
-                        offset: Offset(0, 3),
+                child: Stack(
+                  children:[
+                    Container(
+                      height: height*0.2,
+                      width: width*0.9,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(height*0.02),
+                        color: Colors.white,
+                        image:DecorationImage(image: AssetImage("deptlogos/SCHEDULE.jpg",),
+
+                            fit: BoxFit.cover) ,
+
                       ),
-                    ],
-                    image:DecorationImage(image: AssetImage("deptlogos/SCHEDULE.jpg"),
-                    fit: BoxFit.cover) ,
 
-                  ),
+                    ),
+                    Container(
 
+                      height: height*0.2,
+                      width: width*0.9,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Colors.white12,
+                            Colors.black54,
+                          ],
+                          begin: Alignment.center,
+                          end: Alignment.centerRight,
+                        ),
+                        borderRadius: BorderRadius.circular(height*0.02),
+                        color: Colors.white,
+                      ),
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                            'Schedule',style:GoogleFonts.poppins(fontSize: height*0.04,fontWeight: FontWeight.w500)
+                        ),
+                      ),
+                    )
+
+
+                  ],
                 ),
               ),
             ),
@@ -125,14 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: height*0.2,
                       width: width*0.4,
                       decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.shade700.withOpacity(0.6),
-                              spreadRadius: 5,
-                              blurRadius: 2,
-                              offset: Offset(0, 3),
-                            ),
-                          ],
+
                             borderRadius: BorderRadius.only(topLeft: Radius.circular(height*0.05),topRight: Radius.circular(height*0.01),
                             bottomRight: Radius.circular(height*0.01),bottomLeft: Radius.circular(height*0.01)),
                             color: Colors.white
@@ -142,8 +159,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Enthu",style: TextStyle(fontSize: height*0.03,fontWeight: FontWeight.w500,),),
-                              Text("Points",style: TextStyle(fontSize: height*0.03,fontWeight: FontWeight.w500)),
+                              Text("Enthu",style:GoogleFonts.poppins(fontSize: height*0.03,fontWeight: FontWeight.w500),),
+                              Text("Points",style:GoogleFonts.poppins(fontSize: height*0.03,fontWeight: FontWeight.w500),),
                             ],
 
                           ),
@@ -160,14 +177,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: height*0.2,
                       width: width*0.4,
                       decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.shade700.withOpacity(0.6),
-                            spreadRadius: 5,
-                            blurRadius: 2,
-                            offset: Offset(0, 3),
-                          ),
-                        ],
                           borderRadius: BorderRadius.only(topLeft: Radius.circular(height*0.01),topRight: Radius.circular(height*0.05),
                               bottomRight: Radius.circular(height*0.01),bottomLeft: Radius.circular(height*0.01)),
                           color: Color(0xFFF76858),
@@ -177,8 +186,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Leader",style: TextStyle(fontSize: height*0.03,fontWeight: FontWeight.w500,),),
-                            Text("Points",style: TextStyle(fontSize: height*0.03,fontWeight: FontWeight.w500,),),
+                            Text("Leader",style:GoogleFonts.poppins(fontSize: height*0.03,fontWeight: FontWeight.w500),),
+                            Text("Board",style:GoogleFonts.poppins(fontSize: height*0.03,fontWeight: FontWeight.w500),),
                           ],
                         ),
                       ),
@@ -189,25 +198,57 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            Container(
+            Stack(
+              children:[
+                Container(
 
-              height: height*0.2,
-              width: width*0.9,
-              decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.shade700.withOpacity(0.6),
-                      spreadRadius: 5,
-                      blurRadius: 2,
-                      offset: Offset(0, 3),
+                  height: height*0.2,
+                  width: width*0.9,
+                  decoration: BoxDecoration(
+
+                    borderRadius: BorderRadius.circular(height*0.02),
+                    color: Colors.white,
+                    image:DecorationImage(image: AssetImage("deptlogos/PIC.jpg"),fit: BoxFit.cover) ,
+
+                  ),
+
+                ),
+
+
+                Container(
+
+                  height: height*0.2,
+                  width: width*0.9,
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.white54,
+                          Colors.transparent,
+                        ],
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft
+                      ),
+                      borderRadius: BorderRadius.circular(height*0.02),
+                  ),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                            'Pic of  ',style:GoogleFonts.poppins(fontSize: height*0.03,fontWeight: FontWeight.w500)
+                        ),
+                        Text(
+                            'the  ',style:GoogleFonts.poppins(fontSize: height*0.03,fontWeight: FontWeight.w500)
+                        ),
+                        Text(
+                            'Day  ',style:GoogleFonts.poppins(fontSize: height*0.03,fontWeight: FontWeight.w500)
+                        ),
+                      ],
                     ),
-                  ],
-                  borderRadius: BorderRadius.circular(height*0.02),
-                  color: Colors.white,
-                 image:DecorationImage(image: AssetImage("deptlogos/PIC.jpg"),fit: BoxFit.cover) ,
-
-              ),
-
+                  ),
+                ),
+              ],
             ),
             Padding(
               padding: const EdgeInsets.only(top:30),

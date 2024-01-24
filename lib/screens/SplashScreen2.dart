@@ -16,8 +16,8 @@ class _TextScreenState extends State<TextScreen> {
   @override
   void initState() {
     super.initState();
-    displayedWidget = Container(); // Initial empty container
-
+    displayedWidget = Container();
+    // Initial empty container
     // After 2 seconds, change the displayed widget
     timer = Timer(Duration(seconds: 2), () {
       setState(() {
@@ -28,7 +28,7 @@ class _TextScreenState extends State<TextScreen> {
               padding: const EdgeInsets.only(top: 30),
               child: Text("INSTITUTE",style: TextStyle(fontSize: 24,color: Colors.white)),
             ),
-            Text("GATHERING24'",style: TextStyle(fontSize: 24,color: Colors.white)),
+            Text("GATHERING 24'",style: TextStyle(fontSize: 24,color: Colors.white)),
             Padding(
               padding: const EdgeInsets.only(top: 120),
               child: ElevatedButton(onPressed: (){
@@ -53,7 +53,7 @@ class _TextScreenState extends State<TextScreen> {
                 CircleAvatar(
                   backgroundImage: AssetImage('deptlogos/ids333-removebg-preview.png'),
                   backgroundColor: Colors.black,
-                  radius: 50,
+                  radius: MediaQuery.of(context).size.height*0.03,
                 )
               ],
             )
