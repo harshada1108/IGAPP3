@@ -16,7 +16,7 @@ class IgNotificationScreen extends StatefulWidget {
 
 class _IgNotificationScreenState extends State<IgNotificationScreen> {
 
-  IgViewModel igViewModel= new IgViewModel();
+  IgViewModel igViewModel= IgViewModel();
 
   Future<void> _refreshData(String data) async {
     // Fetch the updated data from the API
@@ -31,12 +31,33 @@ class _IgNotificationScreenState extends State<IgNotificationScreen> {
     final height = MediaQuery.sizeOf(context).height*1;
     return  Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_left, color: Color(0xFFE35B63), size: 60,),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         titleSpacing: 20,
-        title: Text('Notification', style: GoogleFonts.poppins(fontSize: 24,fontWeight: FontWeight.w700),),
+        title: Padding(
+          padding: const EdgeInsets.only(top: 30.0),
+          child: Text("अद्वैतम्",style: TextStyle(color: Colors.white,fontSize:height*0.04),),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.black,
       ),
+      backgroundColor: Colors.black,
       body: SingleChildScrollView(
         child: Column(
           children: [
+            // const Padding(
+            //   padding: EdgeInsets.only(top: 30, bottom: 30),
+            //   child: Text("Notifications",
+            //     style: TextStyle(
+            //       fontWeight: FontWeight.w400,
+            //       fontSize: 30,
+            //       color: Colors.white,
+            //     ),
+            //     textAlign: TextAlign.left,
+            //   ),
+            // ),
             SizedBox(
               height: height,
               width: width,
@@ -45,7 +66,7 @@ class _IgNotificationScreenState extends State<IgNotificationScreen> {
                 builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot){
                   if(snapshot.connectionState==ConnectionState.waiting)
                   {
-                    return Center(
+                    return const Center(
                       child: SpinKitCircle(
                         size: 50,
                         color: Colors.blue,
@@ -62,12 +83,15 @@ class _IgNotificationScreenState extends State<IgNotificationScreen> {
                           if(snapshot.data!.notifications[index].data.toString()!="null")
                             {
                               return Container(
-                                padding: EdgeInsets.all(10),
+                                decoration: const BoxDecoration(
+                                  color: Colors.black,
+                                ),
+                                padding: const EdgeInsets.all(10.0),
                                 alignment: Alignment.bottomCenter,
-                                height: height *.22,
+                                height: height *.2,
                                 width: width*.9,
                                 child: Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 15.0,horizontal: 10),
+                                  padding: const EdgeInsets.symmetric(vertical: 2.0,horizontal: 10),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -78,7 +102,7 @@ class _IgNotificationScreenState extends State<IgNotificationScreen> {
                                              width:width*0.8,
                                             decoration: BoxDecoration(
                                                 borderRadius: BorderRadius.circular(10),
-                                                color: Colors.blue
+                                                color: Colors.white
 
                                             ),
                                             child: Center(child: Text(snapshot.data!.notifications![index].data!.toString(),maxLines:3,overflow: TextOverflow.ellipsis,style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w700),))),

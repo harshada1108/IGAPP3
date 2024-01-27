@@ -149,36 +149,43 @@ class _IgLeaderScreenState extends State<IgLeaderScreen> {
           .size
           .width * 1;
       final height = MediaQuery
-          .of(context)
+          .of(context) 
           .size
           .height * 1;
 
       return Scaffold(
         appBar: AppBar(
           backgroundColor:Colors.black87,
-
-          title: Text(
-            'IG LEADERBOARD',
-            style: GoogleFonts.poppins(
-              fontSize: 20,
-              fontWeight: FontWeight.w700,
-              color: Colors.lightGreen,
-            ),
-
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_left, color : Color(0xFFE35B63), size: 60,),
+            onPressed: () => Navigator.of(context).pop(),
           ),
-            actions: [
-          IconButton(onPressed: _refreshData, icon: Icon(Icons.refresh),),
-        ],
+          title: Padding(
+            padding: const EdgeInsets.only(top: 30),
+            child: Text("अद्वैतम्",style: TextStyle(color: Colors.white,fontSize:height*0.04),),
+          ),
+          centerTitle: true,
+          actions: [
+            IconButton(onPressed: _refreshData, icon: const Icon(Icons.refresh), color: Colors.white ,),
+          ],
         ),
+        backgroundColor: Colors.black,
         body: Column(
           children: [
+            // const Padding(
+            //   padding: EdgeInsets.only(top: 40, bottom: 40),
+            //   child: Text ("IG LEADER BOARD",
+            //     style: TextStyle(fontWeight: FontWeight.w400, fontSize: 40, color: Colors.white,),
+            //     textAlign: TextAlign.center,
+            //   ),
+            // ),
             Expanded(
               child: FutureBuilder<igleadermodel>(
                 future: leaderModelFuture,
                 builder: (BuildContext context,
                     AsyncSnapshot<dynamic> snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
+                    return const Center(
                       child: SpinKitCircle(
                         size: 50,
                         color: Colors.green,
@@ -369,89 +376,92 @@ class _IgLeaderScreenState extends State<IgLeaderScreen> {
                     eeeval.data.toString() ?? eeeval1.data.toString(),
                   ];
 
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 2.0),
-                    child: DataTable(
-                        columns: [
-                          DataColumn(
-                            label: Text(
-                              'INDEX',
-                              style: GoogleFonts.poppins(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.lightGreen,
-                              ),
-                            ),
-                          ),
-                          DataColumn(
-                            label: Text(
-                              'LEADERBOARD',
-                              style: GoogleFonts.poppins(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.lightGreen,
-                              ),
-                            ),
-                          ),
-                          DataColumn(
-                            label: Text(
-                              'POINTS',
-                              style: GoogleFonts.poppins(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.lightGreen,
-                              ),
-                            ),
-                          ),
-                        ],
-                        rows: List.generate(departmentNames.length, (index) {
-                          String departmentName = departmentNames[index];
-                          String Points = points[index];
-
-                          return DataRow(cells: [
-                            DataCell(
-                              Text(
-                                (index + 1).toString(),
-                                style: GoogleFonts.poppins(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.lightGreen,
+                  return Container(
+                    width:width*1 ,
+                    child: SingleChildScrollView(
+                      child: Padding(
+                        padding:  EdgeInsets.symmetric(horizontal: 2.0, vertical: height*0.1),
+                        child: DataTable(
+                          headingRowColor: MaterialStateColor.resolveWith((states) => Colors.green),
+                            columns: [
+                              DataColumn(
+                                label: Text(
+                                  'INDEX',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black,
+                                  ),
                                 ),
                               ),
-                            ),
-                            DataCell(
-                              Text(
-                                departmentName,
-                                style: GoogleFonts.poppins(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.lightGreen,
+                              DataColumn(
+                                label: Text(
+                                  'LEADERBOARD',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black,
+                                  ),
                                 ),
                               ),
-                            ),
-                            DataCell(
-                              Text(
-                                Points,
-                                style: GoogleFonts.poppins(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.lightGreen,
+                              DataColumn(
+                                label: Text(
+                                  'POINTS',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black,
+                                  ),
                                 ),
                               ),
+                            ],
+                            rows: List.generate(departmentNames.length, (index) {
+                              String departmentName = departmentNames[index];
+                              String Points = points[index];
+
+                                  return DataRow(cells: [
+                                    DataCell(
+                                      Text(
+                                        (index + 1).toString(),
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w700,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                    DataCell(
+                                      Text(
+                                        departmentName,
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w700,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                    DataCell(
+                                      Text(
+                                        Points,
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w700,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+
+                                  ]);
+                                })
                             ),
-
-                          ]);
-                        })
-
-
-                    ),
+                          ),
+                        ),
                   );
-                },
+                    }
+                  ),
               ),
-            ),
           ],
         ),
       );
-
   }
 }
